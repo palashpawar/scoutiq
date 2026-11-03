@@ -1,6 +1,8 @@
 # ScoutIQ
 
-![ScoutIQ: find affordable players who fit your brief](brand/thumbnail-16x9.png)
+[![ScoutIQ: find affordable players who fit your brief. Click to watch the demo](brand/thumbnail-16x9.png)](https://www.youtube.com/watch?v=IqbzbL5Gj0U)
+
+▶️ **[Watch the 2-minute demo](https://www.youtube.com/watch?v=IqbzbL5Gj0U)**
 
 An AI scouting assistant for clubs that can't afford a scouting department.
 
