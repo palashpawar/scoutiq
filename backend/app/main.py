@@ -164,8 +164,13 @@ def refine(req: RefineRequest):
     if not llm().enabled:
         q, source, notes, warnings = demo.query, "demo", demo.notes, demo.warnings
     else:
+        key = req.query.cache_key() + "|" + " ".join(req.text.lower().split())
         try:
-            q, source, notes, warnings = llm().refine_query(req.query, req.text), "meta", [
+            if key not in _parse_cache:
+                _parse_cache[key] = llm().refine_query(req.query, req.text)
+                if len(_parse_cache) > 256:
+                    _parse_cache.popitem(last=False)
+            q, source, notes, warnings = _parse_cache[key], "meta", [
                 f"Refinement interpreted by {settings.meta_model}."], []
         except LLMError as exc:
             log.warning("refine fallback: %s", exc)

@@ -1,0 +1,10 @@
+[
+  {"id": "intro", "text": "Clubs with small budgets can't afford big scouting departments. ScoutIQ is an AI scouting assistant that finds affordable players who fit a tactical brief, and shows the evidence behind every pick. It runs on a full season of real Premier League event data from StatsBomb, with Transfermarkt value estimates."},
+  {"id": "ask", "text": "I'll ask in plain English: three midfielders under twenty-five who progress the ball, help defensively, and cost under fifteen million euros. Meta's open-weights model, Muse Spark Open, served on Modal, turns that into a strict, validated query."},
+  {"id": "results", "text": "And here's the key design choice: the model never ranks anyone. Python filters the players, turns each statistic into a percentile against midfielders from the same season, and combines them with these weights. Eleven of a hundred and thirty-four midfielders pass every filter."},
+  {"id": "evidence", "text": "So, why Oriol Romeu? His fit score is broken down metric by metric, so every point is traceable. Strengths, like tackles won, sit next to trade-offs: his progressive carries and recoveries are below average. At an estimated five million euros, his output ranks well above his price in this dataset, so he's flagged as potentially undervalued, as a stated heuristic, not a promise."},
+  {"id": "refine", "text": "I'll add Romeu and Jonjo Shelvey to a comparison, then follow up: increase the budget to twenty-five million. Only the budget changes, and N'Golo Kanté goes straight to the top."},
+  {"id": "compare", "text": "Side by side, the trade-offs are clear. Kanté is in the ninety-ninth percentile for interceptions and recoveries. Shelvey leads the three on progressive passes. And Romeu costs a quarter of Kanté's price."},
+  {"id": "defence", "text": "One more follow-up: prioritize defensive contribution. The weights shift to tackles, interceptions and recoveries, and every change is shown."},
+  {"id": "outro", "text": "If the model fails or returns anything invalid, ScoutIQ falls back to a rule-based parser and says so. ScoutIQ: a shortlist you can actually defend."}
+]
