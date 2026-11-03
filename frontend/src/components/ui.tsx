@@ -36,11 +36,17 @@ export function Notice({ tone, children }: { tone: "warn" | "error" | "info"; ch
 export function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <svg viewBox="0 0 32 32" className="h-7 w-7" aria-hidden>
-        <rect width="32" height="32" rx="8" fill="#10b981" fillOpacity="0.15" />
-        <circle cx="16" cy="16" r="9" fill="none" stroke="#34d399" strokeWidth="2" />
-        <path d="M16 7v18M7 16h18" stroke="#34d399" strokeWidth="1.5" strokeOpacity="0.6" />
-        <circle cx="16" cy="16" r="3" fill="#34d399" />
+      {/* Same mark as brand/logo.svg: a scout's lens over the pitch's centre circle */}
+      <svg viewBox="0 0 512 512" className="h-8 w-8" aria-hidden>
+        <rect width="512" height="512" rx="116" fill="#11243f" />
+        <rect x="6" y="6" width="500" height="500" rx="110" fill="none" stroke="#34d399" strokeOpacity="0.25" strokeWidth="8" />
+        <g stroke="#34d399" strokeOpacity="0.6" strokeWidth="14" fill="none">
+          <line x1="220" y1="112" x2="220" y2="328" />
+          <circle cx="220" cy="220" r="46" />
+        </g>
+        <circle cx="220" cy="220" r="16" fill="#6ee7b7" />
+        <circle cx="220" cy="220" r="120" fill="none" stroke="#34d399" strokeWidth="34" />
+        <line x1="312" y1="312" x2="404" y2="404" stroke="#34d399" strokeWidth="48" strokeLinecap="round" />
       </svg>
       <span className="text-lg font-semibold tracking-tight text-white">
         Scout<span className="text-emerald-400">IQ</span>

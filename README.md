@@ -1,5 +1,7 @@
 # ScoutIQ
 
+![ScoutIQ: find affordable players who fit your brief](brand/thumbnail-16x9.png)
+
 An AI scouting assistant that helps clubs with small budgets find players who fit a tactical brief.
 
 Type a request like *"Find three midfielders under 25 who progress the ball well, contribute defensively,

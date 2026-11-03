@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0a1628; --navy-2: #0d1c33; --navy-3: #11243f; --line: #1a3254; --em: #34d399; --em-2: #10b981; --text: #e2e8f0; --muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; }
+  body {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: var(--text); overflow: hidden;
+    background:
+      radial-gradient(900px 520px at 12% 8%, rgba(16,185,129,.22), transparent 62%),
+      radial-gradient(700px 500px at 100% 100%, rgba(56,189,248,.10), transparent 60%),
+      var(--navy);
+  }
+  /* faint pitch markings */
+  .pitch { position: absolute; inset: 0; opacity: .07; }
+  .wrap { position: relative; height: 100%; display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 40px; padding: 0 76px; }
+  .brand { display: flex; align-items: center; gap: 18px; }
+  .brand img { width: 76px; height: 76px; }
+  .word { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; }
+  .word b { color: var(--em); font-weight: 800; }
+  h1 { margin-top: 34px; font-size: 58px; line-height: 1.04; font-weight: 800; letter-spacing: -2px; color: #fff; }
+  h1 em { font-style: normal; color: var(--em); }
+  .sub { margin-top: 22px; font-size: 22px; line-height: 1.45; color: var(--muted); max-width: 540px; }
+  .chips { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { border: 1px solid var(--line); background: rgba(17,36,63,.8); border-radius: 999px; padding: 8px 15px; font-size: 16px; font-weight: 500; color: #cbd5e1; }
+  .chip.em { border-color: rgba(52,211,153,.45); background: rgba(16,185,129,.12); color: #a7f3d0; }
+
+  .stack { position: relative; height: 560px; }
+  .card { position: absolute; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(17,36,63,.97), rgba(13,28,51,.97));
+          border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .main { width: 470px; right: 10px; top: 40px; padding: 28px 30px; transform: rotate(-1.5deg); }
+  .head { display: flex; align-items: flex-start; gap: 14px; }
+  .rank { width: 46px; height: 46px; border-radius: 13px; background: var(--line); color: var(--em); font-weight: 700; font-size: 21px; display: grid; place-items: center; }
+  .who { flex: 1; }
+  .name { font-size: 27px; font-weight: 700; color: #fff; }
+  .meta { margin-top: 3px; font-size: 16px; color: var(--muted); }
+  .score { text-align: right; }
+  .score .n { font-size: 44px; font-weight: 800; color: var(--em); line-height: 1; }
+  .score .l { margin-top: 5px; font-size: 11px; letter-spacing: 1.5px; color: #64748b; font-weight: 600; }
+  .pills { margin-top: 18px; display: flex; gap: 8px; }
+  .pill { border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; font-size: 13px; color: #cbd5e1; background: rgba(10,22,40,.6); }
+  .bars { margin-top: 22px; display: grid; gap: 15px; }
+  .row .top { display: flex; justify-content: space-between; font-size: 16px; }
+  .row .k { color: #cbd5e1; }
+  .row .w { margin-left: 8px; font-size: 12px; color: #6ee7b7; background: var(--line); padding: 1px 6px; border-radius: 5px; }
+  .row .v { color: var(--muted); }
+  .row .v strong { color: #fff; margin-left: 12px; }
+  .track { margin-top: 7px; height: 9px; border-radius: 99px; background: var(--line); position: relative; overflow: hidden; }
+  .fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #10b981, #6ee7b7); }
+  .track::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(148,163,184,.35); }
+
+  .mini { width: 320px; left: -36px; bottom: -42px; padding: 18px 20px; transform: rotate(2deg); }
+  .mini .tag { display: inline-block; border: 1px solid rgba(52,211,153,.45); background: rgba(16,185,129,.12); color: #a7f3d0; border-radius: 999px; padding: 4px 11px; font-size: 13px; font-weight: 600; }
+  .mini .nm { margin-top: 10px; font-size: 21px; font-weight: 700; color: #fff; }
+  .mini .ds { margin-top: 3px; font-size: 14px; color: var(--muted); }
+  .mini .cmp { margin-top: 12px; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; align-items: center; font-size: 13px; color: var(--muted); }
+  .mini .t2 { height: 7px; border-radius: 99px; background: var(--line); overflow: hidden; }
+  .mini .t2 i { display: block; height: 100%; border-radius: 99px; background: #34d399; }
+  .mini .t2 i.v { background: #f59e0b; }
+
+  /* 3:2 variant: same layout, sized for 1200x800 */
+  body.r32 .wrap { padding: 0 64px; gap: 28px; }
+  body.r32 h1 { font-size: 52px; }
+  body.r32 .sub { font-size: 21px; }
+  body.r32 .main { width: 450px; right: 0; top: 30px; }
+  body.r32 .mini { left: -24px; bottom: -70px; }
+</style>
+</head>
+<body>
+<svg class="pitch" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g fill="none" stroke="#34d399" stroke-width="3">
+    <rect x="40" y="40" width="1200" height="640" rx="6"/>
+    <line x1="640" y1="40" x2="640" y2="680"/>
+    <circle cx="640" cy="360" r="95"/>
+    <rect x="40" y="200" width="170" height="320"/><rect x="1070" y="200" width="170" height="320"/>
+    <rect x="40" y="275" width="60" height="170"/><rect x="1180" y="275" width="60" height="170"/>
+  </g>
+</svg>
+<div class="wrap">
+  <div class="left">
+    <div class="brand"><img src="logo.svg" alt=""><div class="word">Scout<b>IQ</b></div></div>
+    <h1>Find <em>affordable</em> players<br>who fit your brief.</h1>
+    <p class="sub">Ask in plain English. Get a transparent, ranked shortlist with the evidence behind every pick.</p>
+    <div class="chips">
+      <span class="chip em">Meta Muse Spark Open</span>
+      <span class="chip">Modal Endpoints</span>
+      <span class="chip">StatsBomb Open Data</span>
+    </div>
+  </div>
+  <div class="stack">
+    <div class="card main">
+      <div class="head">
+        <div class="rank">1</div>
+        <div class="who"><div class="name">N'Golo Kanté</div><div class="meta">Leicester City · LDM · 24</div></div>
+        <div class="score"><div class="n">97</div><div class="l">FIT SCORE</div></div>
+      </div>
+      <div class="pills"><span class="pill">3,243 min</span><span class="pill">Est. €20M</span><span class="pill">2015/16</span></div>
+      <div class="bars">
+        <div class="row"><div class="top"><span class="k">Interceptions<span class="w">27%</span></span><span class="v">2.17 /90<strong>99th</strong></span></div><div class="track"><div class="fill" style="width:99%"></div></div></div>
+        <div class="row"><div class="top"><span class="k">Ball recoveries<span class="w">22%</span></span><span class="v">7.49 /90<strong>99th</strong></span></div><div class="track"><div class="fill" style="width:99%"></div></div></div>
+        <div class="row"><div class="top"><span class="k">Pressures<span class="w">15%</span></span><span class="v">25.14 /90<strong>97th</strong></span></div><div class="track"><div class="fill" style="width:97%"></div></div></div>
+        <div class="row"><div class="top"><span class="k">Tackles won<span class="w">35%</span></span><span class="v">2.83 /90<strong>95th</strong></span></div><div class="track"><div class="fill" style="width:95%"></div></div></div>
+      </div>
+    </div>
+    <div class="card mini">
+      <span class="tag">Potentially undervalued*</span>
+      <div class="nm">Oriol Romeu</div>
+      <div class="ds">Southampton · 24 · Est. €5M</div>
+      <div class="cmp">
+        <span>Score rank</span><span class="t2"><i style="width:75%"></i></span>
+        <span>Value rank</span><span class="t2"><i class="v" style="width:35%"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
