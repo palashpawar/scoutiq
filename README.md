@@ -110,6 +110,11 @@ To rebuild the database from the original sources (~110 MB download), run `.venv
 - Single-season statistics are noisy and can't establish tactical fit. Defenders and goalkeepers aren't
   supported yet.
 
+## Licence
+
+Code is released under the [MIT License](LICENSE). The bundled data keeps its sources' terms: StatsBomb Open Data
+requires attribution, and transfermarkt-datasets is CC0.
+
 ## Credits
 
 Event data provided by [StatsBomb](https://github.com/statsbomb/open-data). Market values from
